@@ -22,7 +22,7 @@ route('/success', 'success', function() {
   });
 });
 
-route('/', 'login', function () {
+route('/', 'home', function () {
   this.title = "Login form";
   this.errorMsg = null;
   this.responseToken = null;
