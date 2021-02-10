@@ -6,6 +6,27 @@
   <script type="text/html" id="home">
     <h1>Start <%= where %>!</h1>
   </script>
+  <script type="text/html" id="login">
+    <h1><%= title %></h1>
+    <form class="login-form" method="POST">
+      <div class="login-form__login">
+        <label for="login-input">Username: </label>
+        <input type="text" name="username" id="login-input" required>
+      </div>
+      <div class="login-form__password">
+        <label for="password-input">Password:</label>
+        <input type="text" name="password" id="password-input" required>
+      </div>
+      <button type="submit" class="login-form__button">Submit</button>
+    </form>
+    <% if (errorMsg) { %>
+      <p><%= errorMsg %></p>
+    <% } %>
+  </script>
+  <script type="text/html" id="success">
+    <h1><%= title %></h1>
+    <button class="logout-btn"><%= logout %></button>
+  </script>
   <script type="text/html" id="example1">
     <h1><%= title %></h1>
     <% for (let i of title) { %>
@@ -21,11 +42,6 @@
   </script>
 </head>
 <body>
-  <nav>
-    <a href="#">home</a>
-    <a href="#/ex1">example 1</a>
-    <a href="#/ex2">example 2</a>
-  </nav>
   <div id="app"></div>
   <script src="./app.js"></script>
 </body>
