@@ -1,0 +1,99 @@
+<script type="text/html" id="home">
+  <p class="zwzt">ZADANIE DLA ZWZT</p>
+  <div class="login">
+    <h1><%= title %></h1>
+    <form class="login-form" method="POST">
+      <div class="login-form__login">
+        <label for="login-input">Username</label>
+        <input type="text" name="username" id="login-input" value=<%= `"${lastUsername}"` %> autocomplete="on" required>
+      </div>
+      <div class="login-form__password">
+        <label for="password-input">Password</label>
+        <input type="password" name="password" id="password-input" autocomplete="on" required>
+      </div>
+      <button type="submit" class="login-form__button">Submit</button>
+    </form>
+    
+    <p class="login__error">
+      <% if (errorMsg) { %>
+        <%= errorMsg %>
+      <% } %>
+    </p>
+  </div>
+</script>
+
+<style>
+  .login{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 400px;
+
+    align-items: center;
+    background-color: #fff;
+    padding: 40px;
+    z-index: 1;
+    box-shadow: -6px 6px 8px 2px rgba(125, 41, 128, 0.5);
+  }
+
+  .login h1{
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  .login-form{
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-form label{
+    display: block;
+    margin-bottom: 5px;
+    color:rgb(61, 61, 61);
+    font-size: 0.95rem;
+  }
+
+  .login-form input{
+    width: 100%;
+    padding: 5px;
+
+    color: rgb(134, 28, 104);
+  }
+
+  .login-form div{
+    margin-bottom: 20px;
+  }
+
+  .login-form button{
+    background-color: #a32a71;
+    color: #fff;
+
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.001em;
+    font-size: 1.1rem;
+
+    align-self: center;
+    transition-duration: 0.1s;
+  }
+
+  .login-form button:hover{
+    background-color: rgb(61, 61, 61);
+  }
+
+  .login__error{
+    margin-top: 30px;
+    color: rgb(204, 8, 25);
+  }
+</style>

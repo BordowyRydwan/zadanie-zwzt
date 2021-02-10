@@ -34,21 +34,34 @@ const router = async () => {
   events = [];
   // Current route url (getting rid of '#' in hash as well):
   const url = location.hash.slice(1) || '/';
-  const templatePath = location.hash.slice(1) || '/login';
+  let templatePath = location.hash.slice(1) || '/login';
   // Get route by url or fallback if it does not exist:
   const route = routes[url] || routes['*'];
 
-  const file = await fetch(`./views${templatePath}.html`)
+  if(!routes.hasOwnProperty(url)){
+    templatePath = '/404';
+  }
+
+  const file = await fetch(`./views${templatePath}.purejs`)
                       .then(response => response.text());
                     
   const parser = new DOMParser();
   const component = parser.parseFromString(file, 'text/html');
 
+  const previousStyles = document.head.querySelector('style');
+
+  if(previousStyles !== null){
+    document.head.removeChild(previousStyles);
+  }
+
   const componentCode = component.querySelector('script');
   const componentStyle = component.querySelector('style');
                       
   document.head.appendChild(componentCode);
-  //document.head.appendChild(componentStyle);
+
+  if(componentStyle !== null){
+    document.head.appendChild(componentStyle);
+  }
 
   if (route && route.controller) {
     const ctrl = new route.controller();
@@ -66,7 +79,6 @@ const router = async () => {
   }
 
   document.head.removeChild(componentCode);
-
 };
 
 window.addEventListener('hashchange', router);

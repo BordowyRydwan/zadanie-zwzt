@@ -1,0 +1,51 @@
+<script type="text/html" id="success">
+  <p class="zwzt">ZADANIE DLA ZWZT</p>
+  <div class="success-container">
+    <h1><%= title %></h1>
+    <a class="logout" href="/"><%= logout %></button>
+  </div>
+</script>
+
+<style>
+  .success-container{
+    background-color: #fff;
+    height: 400px;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow: -6px 6px 8px 2px rgba(125, 41, 128, 0.5);
+  }
+
+  .success-container h1{
+    color: #F43FA8;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .success-container a{
+    background-color: #a32a71;
+    color: #fff;
+
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    width: 150px;
+    padding: 20px;
+
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    transition: 0.1s;
+    text-decoration: none;
+  }
+
+  .success-container a:hover{
+    background-color: rgb(61, 61, 61);
+  }
+</style>

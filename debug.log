@@ -1,0 +1,1 @@
+[0210/135312.984:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\Dawid\AppData\Local\Google\Chrome\User Data\Crashpad\reports\b10c5dfb-f39f-4828-8dc6-0b14e4ef33d4.dmp: Proces nie mo¿e uzyskaæ dostêpu do pliku, poniewa¿ jest on u¿ywany przez inny proces. (0x20)

@@ -1,17 +1,4 @@
-import { route } from './router';
-
-route('/ex1', 'example1', function() {
-  this.title = 'Example 1';
-});
-
-route('/ex2', 'example2', function() {
-  this.title = 'Example 2';
-  this.counter = 0;
-  this.$on('.my-button', 'click', () => {
-    this.counter += 1;
-    this.$refresh();
-  });
-});
+import { route } from './purejs/router';
 
 route('/success', 'success', function() {
   this.title = 'Successful login!';
@@ -26,6 +13,17 @@ route('/', 'home', function () {
   this.title = "Login form";
   this.errorMsg = null;
   this.responseToken = null;
+
+  this.lastUsername = '';
+  this.lastPassword = '';
+
+  this.data = {
+
+  };
+
+  this.methods = {
+
+  };
 
   this.$on('.login-form', 'submit', async (evt) => {
     const formData = new FormData(document.querySelector('.login-form'));
@@ -61,6 +59,8 @@ route('/', 'home', function () {
     else{
       const responseJSON = await response.json();
 
+      this.lastUsername = formDataObject.username;
+      this.lastPassword = formDataObject.password;
       this.errorMsg = responseJSON.message;
       this.$refresh();
     }
