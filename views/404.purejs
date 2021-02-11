@@ -1,49 +1,49 @@
 <script type="text/html" id="404">
-    <p class="zwzt">ZADANIE DLA ZWZT</p>
-    <div class="error-404-container">
-        <h1>404 Not found</h1>
-        <a href="/" class="go-to-login-btn">BACK TO LOGIN</a>
-    </div>
+  <p class="zwzt">ZADANIE DLA ZWZT</p>
+  <div class="error-404-container">
+    <h1>404 Not found</h1>
+    <a href="/" class="go-to-login-btn">BACK TO LOGIN</a>
+  </div>
 </script>
 
 <style>
-    .error-404-container{
-      background-color: #fff;
-      height: 400px;
-      width: 400px;
-  
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
+  .error-404-container {
+    background-color: #fff;
+    height: 400px;
+    width: 400px;
 
-      box-shadow: -6px 6px 8px 2px rgba(125, 41, 128, 0.5);
-    }
-  
-    .error-404-container h1{
-      color: #F43FA8;
-      font-weight: 700;
-      text-align: center;
-    }
-  
-    .error-404-container a{
-      background-color: #a32a71;
-      color: #fff;
-  
-      border: 0;
-      outline: none;
-      box-shadow: none;
-      cursor: pointer;
-  
-      padding: 20px;
-  
-      text-transform: uppercase;
-      font-weight: 700;
-      text-align: center;
-      text-decoration: none;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 
-    .login-form a:hover{
-        background-color: rgb(61, 61, 61);
-    }
-  </style>
+    box-shadow: -6px 6px 8px 2px rgba(125, 41, 128, 0.5);
+  }
+
+  .error-404-container h1 {
+    color: #F43FA8;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .error-404-container a {
+    background-color: #a32a71;
+    color: #fff;
+
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    padding: 20px;
+
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .login-form a:hover {
+    background-color: rgb(61, 61, 61);
+  }
+</style>

@@ -10,60 +10,73 @@ route('/success', 'success', function() {
 });
 
 route('/', 'home', function () {
-  this.title = "Login form";
-  this.errorMsg = null;
-  this.responseToken = null;
-
-  this.lastUsername = '';
-  this.lastPassword = '';
-
   this.data = {
-
+    title: "Login form",
+    errorMsg: null,
+    lastUsername: '',
   };
 
   this.methods = {
+    getResponseFromLoginAPI: (loginApiURL, data) => {
+      return fetch(loginApiURL, {method: 'POST', body: JSON.stringify(data)});
+    },
 
+    getFormData: () => {
+      const formData = new FormData(document.querySelector('.login-form'));
+
+      return Object.fromEntries(formData.entries());
+    },
+
+    validateFormData: formData => {
+      const {username, password} = formData;
+
+      // double security is still better than none :)
+      if(!(username && password)){
+        throw new Error('Validate form has been modified');
+      }
+
+      if(username.length === 0 && password.length === 0){
+        this.data.errorMsg = 'Enter password and login!';
+        return false;
+      }
+  
+      if(username.length === 0){
+        this.data.errorMsg = 'Enter your login!';
+        return false;
+      }
+  
+      if(password.length === 0){
+        this.data.errorMsg = 'Enter your password!';
+        return false;
+      }
+
+      return true;
+    }
   };
 
   this.$on('.login-form', 'submit', async (evt) => {
-    const formData = new FormData(document.querySelector('.login-form'));
-    const formDataObject = Object.fromEntries(formData.entries());
+    const requestData = this.methods.getFormData();
+    const dataValidationCheck = this.methods.validateFormData(requestData);
+
     const loginApiURL = 'https://zwzt-zadanie.netlify.app/api/login';
 
     evt.preventDefault();
 
-    // double security is still better than none :)
-    if(formDataObject.username.length === 0 && formDataObject.password.length === 0){
-      this.errorMsg = 'Enter password and login!';
-      this.$refresh();
-      return;
+    if(dataValidationCheck){
+      const response = await this.methods.getResponseFromLoginAPI(loginApiURL, requestData);
+
+      if(response.status >= 200 && response.status <= 299){
+        window.location = '#/success';
+      }
+      else{
+        const responseJSON = await response.json();
+
+        this.data.lastUsername = requestData.username;
+        this.data.errorMsg = responseJSON.message;
+      }
     }
 
-    if(formDataObject.username.length === 0){
-      this.errorMsg = 'Enter your login!';
-      this.$refresh();
-      return;
-    }
-
-    if(formDataObject.password.length === 0){
-      this.errorMsg = 'Enter your password!';
-      this.$refresh();
-      return;
-    }
-
-    const response = await fetch(loginApiURL, {method: 'POST', body: JSON.stringify(formDataObject)});
-
-    if(response.status >= 200 && response.status <= 299){
-      window.location = '#/success';
-    }
-    else{
-      const responseJSON = await response.json();
-
-      this.lastUsername = formDataObject.username;
-      this.lastPassword = formDataObject.password;
-      this.errorMsg = responseJSON.message;
-      this.$refresh();
-    }
+    this.$refresh();
   });
 
 });

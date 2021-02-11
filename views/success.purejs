@@ -7,7 +7,7 @@
 </script>
 
 <style>
-  .success-container{
+  .success-container {
     background-color: #fff;
     height: 400px;
     width: 400px;
@@ -20,13 +20,13 @@
     box-shadow: -6px 6px 8px 2px rgba(125, 41, 128, 0.5);
   }
 
-  .success-container h1{
+  .success-container h1 {
     color: #F43FA8;
     font-weight: 700;
     text-align: center;
   }
 
-  .success-container a{
+  .success-container a {
     background-color: #a32a71;
     color: #fff;
 
@@ -45,7 +45,7 @@
     text-decoration: none;
   }
 
-  .success-container a:hover{
+  .success-container a:hover {
     background-color: rgb(61, 61, 61);
   }
 </style>
