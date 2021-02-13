@@ -57,7 +57,6 @@ route('/', 'home', function () {
   this.$on('.login-form', 'submit', async (evt) => {
     const requestData = this.methods.getFormData();
     const dataValidationCheck = this.methods.validateFormData(requestData);
-
     const loginApiURL = 'https://zwzt-zadanie.netlify.app/api/login';
 
     evt.preventDefault();

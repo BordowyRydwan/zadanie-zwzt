@@ -70,9 +70,7 @@ const router = async () => {
     route.onRefresh(() => {
       forEachEvent('removeEventListener');
       // Render route template with John Resig's template engine:
-      
       el.innerHTML = engine(route.templateId, ctrl);
-
       forEachEvent('addEventListener');
     });
     // Trigger the first refresh:

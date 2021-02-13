@@ -28,6 +28,12 @@
     color: #FFF;
     font-size: 4rem;
 
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
     letter-spacing: 0.01em;
+}
+
+@media (max-width: 600px){
+    .zwzt{
+        display: none;
+    }
 }
